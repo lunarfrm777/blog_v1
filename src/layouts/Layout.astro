@@ -3,14 +3,16 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Lune's Blog</title>
 	</head>
 	<body>
 		<slot />
-		<a href="/about">About</a>
+		<div class="container">
+			<a href="/">Home</a>
+			<a href="/about">About</a>
+		</div>
 	</body>
 </html>
 
@@ -20,5 +22,12 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		background: #FCBBDC;
+	}
+
+	.container {
+		display: grid;
+
+
 	}
 </style>
