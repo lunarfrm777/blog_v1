@@ -1,5 +1,5 @@
 ---
-import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
 const { frontmatter } = Astro.props;
 ---
 <html lang="en">
@@ -8,7 +8,22 @@ const { frontmatter } = Astro.props;
   </head>
   <body style={`background-color: ${frontmatter.backgroundColor || '#FCBBDC'}`}>
     <main>
+      <h1>{frontmatter.title}</h1>
+      <img src={frontmatter.image.src} alt={frontmatter.image.alt} class="cover-image"/>
       <slot />
+      <Footer />
     </main>
   </body>
 </html>
+
+<style>
+    .cover-image {
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        display: block;
+        margin: 1rem auto;
+        border-radius: 8px;
+    }
+</style>
+ 

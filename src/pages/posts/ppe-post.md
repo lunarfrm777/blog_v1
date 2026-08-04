@@ -4,11 +4,11 @@ pubDate: 2026-08-04
 description: 'This blog talks about pushing back on fears when strengthening skills or trying new things'
 author: 'Lune'
 image:
-    layout: '../../layouts/BlogPost.astro'
+    src: '/images/blog/ppe_image.png'
     alt: 'A photo of the beach with Patterns,, Patience and Experience over it!'
 tags: ["astro", "blogging", "learning in public", "patterns", "patience", "experience"]
+layout: '../../layouts/BlogPost.astro'
 ---
-# Patterns,, Patience,, Experience (PPE)
 
 Published on: 2026-08-04
 
