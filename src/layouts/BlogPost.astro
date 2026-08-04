@@ -1,0 +1,14 @@
+---
+import Nav from '../components/Nav.astro';
+const { frontmatter } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <title>{frontmatter.title}</title>
+  </head>
+  <body style={`background-color: ${frontmatter.backgroundColor || '#FCBBDC'}`}>
+    <main>
+      <slot />
+    </main>
+  </body>
+</html>
