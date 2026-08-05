@@ -1,5 +1,6 @@
 ---
 	import Nav from "../components/Nav.astro"
+import PageWrapper from "../components/PageWrapper.astro"
 ---
 <!doctype html>
 <html lang="en">
@@ -11,7 +12,9 @@
 		<title>Lune's Blog</title>
 	</head>
 	<body>
-		<Nav />
+		<PageWrapper>
+			<Nav />
+		</PageWrapper>
 		<slot />
 	</body>
 </html>
