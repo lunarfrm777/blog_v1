@@ -7,14 +7,19 @@ interface Post {
     description?: string;
     pubDate: string;
   };
-  url: string;
+  file: string;
 }
 
-const postFiles = Object.values(import.meta.glob("../posts/*.md", { eager: true }));
+const postModules = import.meta.glob<Post>("../posts/*.md", { eager: true });
 
-const sortedPosts = postFiles.sort(
-  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
-);
+const sortedPosts = Object.entries(postModules)
+  .map(([path, post]) => ({
+    ...post,
+    slug: path.split("/").pop()?.replace(".md", ""),
+  }))
+  .sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
 ---
 <Layout>
     <div class="blog-list">
@@ -23,8 +28,8 @@ const sortedPosts = postFiles.sort(
         {sortedPosts.map((post) => (
           <li>
             <a href={`/blog/${post.slug}`}>
-              <h2>{post.data.title}</h2>
-              {post.data.description && <p>{post.data.description}</p>}
+              <h2>{post.frontmatter.title}</h2>
+              {post.frontmatter.description && <p>{post.frontmatter.description}</p>}
             </a>
           </li>
         ))}
@@ -32,19 +37,18 @@ const sortedPosts = postFiles.sort(
     </div>
 </Layout>
 
+
 <style>
   .blog-list {
     max-width: 700px;
     margin: 3rem auto;
     padding: 0 1.5rem;
   }
-
   .blog-list h1 {
     text-align: center;
     color: rgb(75, 5, 52);
     margin-bottom: 2rem;
   }
-
   .blog-list ul {
     list-style: none;
     padding: 0;
@@ -52,7 +56,6 @@ const sortedPosts = postFiles.sort(
     flex-direction: column;
     gap: 1.5rem;
   }
-
   .blog-list li a {
     display: block;
     text-decoration: none;
@@ -63,17 +66,14 @@ const sortedPosts = postFiles.sort(
     box-shadow: 0 0 12px rgba(255, 130, 190, 0.25);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-
   .blog-list li a:hover {
     transform: scale(1.02);
     box-shadow: 0 0 20px rgba(255, 130, 190, 0.45);
   }
-
   .blog-list h2 {
     margin: 0 0 0.4rem 0;
     color: rgb(75, 5, 52);
   }
-
   .blog-list p {
     margin: 0;
     color: rgb(120, 60, 95);
