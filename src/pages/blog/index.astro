@@ -1,10 +1,19 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getCollection } from "astro:content";
 
-const posts = await getCollection("blog"); // adjust to your content collection name
-const sortedPosts = posts.sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+interface Post {
+  frontmatter: {
+    title: string;
+    description?: string;
+    pubDate: string;
+  };
+  url: string;
+}
+
+const postFiles = Object.values(import.meta.glob("../posts/*.md", { eager: true }));
+
+const sortedPosts = postFiles.sort(
+  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
 );
 ---
 <Layout>
