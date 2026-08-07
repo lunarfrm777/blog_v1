@@ -6,6 +6,7 @@ interface Props {
   centerNav?: boolean;
 }
 const { centerNav = true } = Astro.props;
+const isHome = Astro.url.pathname === "/";
 ---
 <!doctype html>
 <html lang="en">
@@ -28,13 +29,12 @@ const { centerNav = true } = Astro.props;
 			<span class="sparkle" style="top: 50%; left: 92%;">✨</span>
 		</div>
 
-		<PageWrapper center={centerNav} corner={!centerNav}>
+		<PageWrapper center={isHome} top={!isHome}>
 			<Nav />
 		</PageWrapper>
 		<slot />
 	</body>
 </html>
-
 <style>
 	html,
 	body {
