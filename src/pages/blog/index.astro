@@ -21,7 +21,7 @@ const sortedPosts = Object.entries(postModules)
     (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
   );
 ---
-<Layout>
+<Layout centerNav={false}>
     <div class="blog-list">
       <h1>Blog Posts</h1>
       <ul>

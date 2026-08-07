@@ -1,6 +1,11 @@
 ---
-	import Nav from "../components/Nav.astro"
+import Nav from "../components/Nav.astro"
 import PageWrapper from "../components/PageWrapper.astro"
+
+interface Props {
+  centerNav?: boolean;
+}
+const { centerNav = true } = Astro.props;
 ---
 <!doctype html>
 <html lang="en">
@@ -12,12 +17,13 @@ import PageWrapper from "../components/PageWrapper.astro"
 		<title>Lune's Blog</title>
 	</head>
 	<body>
-		<PageWrapper>
+		<PageWrapper center={centerNav}>
 			<Nav />
 		</PageWrapper>
 		<slot />
 	</body>
 </html>
+
 
 <style>
 	html,

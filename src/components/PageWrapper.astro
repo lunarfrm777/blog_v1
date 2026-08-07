@@ -1,4 +1,6 @@
-<div class="page-wrapper">
+---
+---
+<div>
   <div class="sparkle-field">
     <span class="sparkle" style="top: 10%; left: 15%;">✨</span>
     <span class="sparkle" style="top: 20%; left: 80%;">💖</span>
@@ -10,39 +12,38 @@
     <span class="sparkle" style="top: 50%; left: 92%;">✨</span>
   </div>
 
-  <div class="container menu menu-horizontal rounded-box">
-    <span class="corner-sparkle top-left">✨</span>
-    <a href="/">Home</a>
-    <!-- <a href="/about">About</a> -->
-    <a href="/blog">Blog Posts</a>
-    <span class="corner-sparkle bottom-right">💖</span>
+  <div class="content">
+    <slot />
   </div>
 </div>
 
 <style>
-  /* Custom cursor - heart shaped, applied to whole page */
-  :global(body) {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M16 28C16 28 3 20 3 11.5C3 7 6.5 4 10.5 4C13 4 15 5.5 16 7.5C17 5.5 19 4 21.5 4C25.5 4 29 7 29 11.5C29 20 16 28 16 28Z' fill='%23ff4fa3' stroke='%23ffffff' stroke-width='1.5'/%3E%3C/svg%3E") 16 16, auto;
-  }
-
-  /* Make links/buttons show a "wand" cursor on hover for extra flair */
-  :global(a), :global(button) {
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cg transform='rotate(45 16 16)'%3E%3Crect x='15' y='10' width='2' height='18' fill='%23b565d8'/%3E%3Cpath d='M16 2l1.5 4L16 10l-1.5-4z' fill='%23ffd700'/%3E%3Ccircle cx='16' cy='6' r='2' fill='%23ffd700'/%3E%3C/g%3E%3C/svg%3E") 4 4, pointer;
-  }
-
   .page-wrapper {
     position: relative;
+  }
+
+  .page-wrapper.center {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+  }
+
+  .page-wrapper.corner {
+    display: inline-block;
+    margin: 1.5rem;
   }
 
   .sparkle-field {
-    position: absolute;
+    position: fixed;
     inset: 0;
     pointer-events: none;
+    z-index: -1;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
   }
 
   .sparkle {
@@ -71,48 +72,5 @@
       opacity: 1;
       transform: scale(1.2) rotate(15deg);
     }
-  }
-
-  .container {
-    position: relative;
-    display: flex;
-    margin: 2rem;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    padding: 1.2rem 2.5rem;
-    background: linear-gradient(135deg, #fff0f6, #ffe4f1);
-    border: 2px solid #ffb6d9;
-    box-shadow: 0 0 20px rgba(255, 130, 190, 0.4);
-    border-radius: 999px;
-  }
-
-  .corner-sparkle {
-    position: absolute;
-    font-size: 1.1rem;
-    animation: twinkle 2s ease-in-out infinite;
-  }
-
-  .corner-sparkle.top-left {
-    top: -10px;
-    left: -10px;
-  }
-
-  .corner-sparkle.bottom-right {
-    bottom: -10px;
-    right: -10px;
-    animation-delay: 0.7s;
-  }
-
-  a {
-    text-decoration: none;
-    color: rgb(75, 5, 52);
-    font-weight: bold;
-    transition: color 0.2s ease, transform 0.2s ease;
-  }
-
-  a:hover {
-    color: #ff4fa3;
-    transform: scale(1.1);
   }
 </style>
