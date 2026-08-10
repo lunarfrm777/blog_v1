@@ -24,9 +24,9 @@ const { Content } = post;
     {post.frontmatter.pubDate && (
       <p class="post-date">{new Date(post.frontmatter.pubDate).toLocaleDateString()}</p>
     )}
-    {post.frontmatter.description && (
+    <!-- {post.frontmatter.description && (
       <p class="post-description">{post.frontmatter.description}</p>
-    )}
+    )} -->
     <div class="post-content">
       <Content />
     </div>

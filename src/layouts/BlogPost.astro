@@ -8,7 +8,6 @@ const { frontmatter } = Astro.props;
   </head>
   <body style={`background-color: ${frontmatter.backgroundColor || '#FCBBDC'}`}>
     <main>
-      <h1>{frontmatter.title}</h1>
       <img src={frontmatter.image.src} alt={frontmatter.image.alt} class="cover-image"/>
       <slot />
       <Footer />
