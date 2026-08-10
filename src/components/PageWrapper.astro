@@ -1,4 +1,35 @@
 ---
+interface Props {
+  center?: boolean;
+  top?: boolean;
+}
+const { center = false, top = false } = Astro.props;
+---
+<div class:list={["page-wrapper", { center, top }]}>
+  <slot />
+</div>
+
+<style>
+  .page-wrapper {
+    width: 100%;
+  }
+
+  .page-wrapper.center {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .page-wrapper.top {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.5rem;
+  }
+</style>
+
+
+<!-- ---
 ---
 <div>
   <div class="sparkle-field">
@@ -73,4 +104,4 @@
       transform: scale(1.2) rotate(15deg);
     }
   }
-</style>
+</style> -->
