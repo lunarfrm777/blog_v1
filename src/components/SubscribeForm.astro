@@ -1,0 +1,101 @@
+---
+// Replace YOUR_USERNAME with your actual Buttondown username once approved
+const BUTTONDOWN_USERNAME = "YOUR_USERNAME";
+---
+<div class="subscribe-box">
+  <span class="subscribe-sparkle">✨</span>
+  <h3>Get new posts in your inbox</h3>
+  <p>No spam, just updates when something new goes up.</p>
+  <form
+    action={`https://buttondown.com/api/emails/embed-subscribe/${BUTTONDOWN_USERNAME}`}
+    method="post"
+    target="popupwindow"
+    onsubmit={`window.open('https://buttondown.com/${BUTTONDOWN_USERNAME}', 'popupwindow')`}
+    class="subscribe-form"
+  >
+    <input
+      type="email"
+      name="email"
+      placeholder="your@email.com"
+      required
+    />
+    <button type="submit">Subscribe 💌</button>
+  </form>
+  <span class="subscribe-sparkle bottom">💖</span>
+</div>
+
+<style>
+  .subscribe-box {
+    position: relative;
+    max-width: 500px;
+    margin: 3rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: linear-gradient(135deg, #fff0f6, #ffe4f1);
+    border: 2px solid #ffb6d9;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 20px rgba(255, 130, 190, 0.3);
+  }
+
+  .subscribe-box h3 {
+    color: rgb(75, 5, 52);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .subscribe-box p {
+    color: rgb(120, 60, 95);
+    font-size: 0.9rem;
+    margin: 0 0 1.2rem 0;
+  }
+
+  .subscribe-form {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .subscribe-form input {
+    padding: 0.7rem 1.2rem;
+    border: 2px solid #ffb6d9;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    outline: none;
+    min-width: 220px;
+    color: rgb(75, 5, 52);
+  }
+
+  .subscribe-form input:focus {
+    border-color: #ff4fa3;
+  }
+
+  .subscribe-form button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 999px;
+    background: #ff4fa3;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .subscribe-form button:hover {
+    background: #e63d8f;
+    transform: scale(1.05);
+  }
+
+  .subscribe-sparkle {
+    position: absolute;
+    font-size: 1.3rem;
+    top: -10px;
+    left: -10px;
+  }
+
+  .subscribe-sparkle.bottom {
+    top: auto;
+    bottom: -10px;
+    left: auto;
+    right: -10px;
+  }
+</style>
