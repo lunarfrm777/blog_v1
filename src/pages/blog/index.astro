@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import SubscribeForm from "../../components/SubscribeForm.astro"
 
 interface Post {
   frontmatter: {
@@ -34,6 +35,7 @@ const sortedPosts = Object.entries(postModules)
           </li>
         ))}
       </ul>
+       <SubscribeForm />
     </div>
 </Layout>
 
