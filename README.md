@@ -1,4 +1,4 @@
-# ♡ v1blog ♡
+# ♡ starcurrent ♡
 
 <img width="1912" height="965" alt="Desktop View of Blog" src="https://github.com/user-attachments/assets/3ead8537-cc60-4893-9a74-86c089c1f21e" />
 <img width="1290" height="2796" alt="Mobile View of Blog" src="https://github.com/user-attachments/assets/3ab74dd9-6885-4ac9-92a0-5dc4566d79bc" />
